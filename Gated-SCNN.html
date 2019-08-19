@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Gated-SCNN</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">UCAS-ZDJ</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
+					
+					<div class="bio mb-2"><h5>周登继</h5></div>
+					<div class="bio mb-3"><h5>中国科学院大学</h5></div>
+					
+					<a href="https://blog.csdn.net/qq_37935516" target="_blank" class="nav-item text-danger">CSDN</a>&nbsp;&nbsp;
+					<a href="https://github.com/zzzhoudj" target="_blank" class="nav-item text-danger">GitHub</a>
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-left">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>博客主页 <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="blog-list.html"><i class="fas fa-bookmark fa-fw mr-2"></i>博客列表</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>关于我</a>
+						</li>
+					</ul>
+					
+					<div class="my-2 my-md-3">
+						<a class="btn btn-primary" href="mailto:zhouengji19@mails.ucas.edu.cn">邮件联系</a>
+					</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">【ICCV 2019】Gated-SCNN: Gated Shape CNNs for Semantic Segmentation</h2>
+				    <div class="meta mb-3"><span class="date">Published: 2019-08-12</span><span class="time">10 min read</span></div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				    <!-- <figure class="blog-banner">
+				        <a href="#"><img class="img-fluid" src="assets/images/blog/blog-post-banner.jpg" alt="image"></a>
+				        <figcaption class="mt-2 text-center image-caption">Image Credit: <a href="#?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
+					</figure> -->
+					<blockquote>
+							<p><small>这篇论文是2019年语义分割领域的最新成果，采用双流CNN和ASPP进行语义分割处理，在细小的物体上有着很大的提升。</small></p>
+							<p><small>原文链接：<a href="https://arxiv.org/abs/1907.05740" target="_blank">https://arxiv.org/abs/1907.05740</a></small></p>
+							<p><small>项目：<a href="https://nv-tlabs.github.io/GSCNN/" target="_blank">https://nv-tlabs.github.io/GSCNN/</a></small></p>
+							<p><small>Github：<a href="https://github.com/nv-tlabs/GSCNN" target="_blank">https://github.com/nv-tlabs/GSCNN</a></small></p>
+					</blockquote>
+					<hr>
+					<h3 class="mt-5 mb-3">Abstract</h3>
+				    <p>当前最先进的深度卷积神经网络的图像分割将颜色、形状和纹理信息都放在一起处理。由于它们包含与识别有关的非常不同类型的信息导致效果并不理想。在这里我们提出一种双流CNN用于语义分割，将处理形状信息的单独出来作为一个流shape stream，与经典流classical stream平行处理。这个网络的关键是连接两个流的中间层是一种新的门类型。具体来说，我们使用经典流中的高级激活来对形状流中的低层激活进行门化，从而有效地消除噪声并帮助shape stream聚焦于处理相关的边界相关信息。实验证明在更瘦更小的物体上显著地提升了物体和周围的形状预测，并在Cityscapes数据集上采用mIoU和F-score指标评价该网络，在目前最先进的网络上高出2%和4%。项目地址：<a href="https://nv-tlabs.github.io/GSCNN/" target="_blank">https://nv-tlabs.github.io/GSCNN/</a></p>
+					
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-thumb.jpg"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-thumb.jpg" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">Gated-SCNN 结构图</figcaption>
+					</figure>
+					
+					<h3 class="mt-5 mb-3">Introduction</h3>
+				    <p>语义分割在计算机视觉领域的应用范围很广，在几乎所有的分割测试中CNN都极大地提升了分割的准确率。将用于分类的CNN用于分割的一种标准方法是将全连接层转换为卷积层，如FCN。然而，这种操作也有着明显的缺点，比如会损失输出的分辨率。DeepLab等网络提出了一些方法恢复输出的分辨率。</p>
+					<p>在DCNN中同时处理颜色、形状和纹理信息有着明显的缺点，于是提出一种双流CNN结构，其中一个支流专门用于处理形状信息，叫做shape stream，而另一流则为经典的CNN流，即classical stream。两个支流在最顶层之前不做任何信息的融合。</p>
+					<p>这个网络的关键是两个直流在交互的时候采用了一种新的门类型，利用包含在经典流中的高级信息来在其非常早期的处理阶段对形状流中的激活进行降噪处理。这样做使得形状流能专注于处理形状信息，并能在完整的分辨率上操作。为了实现形状信息被定向到所需的流，这里采用语义边界损失来监督它。文章进一步开发了一种新的损失函数，它拟合预测的结果与GT语义边界对齐。新架构网络称为GSCNN。</p>
+					<p>网络的classical stream能够被任何经典CNN替换，在论文中尝试了ResNet-50，ResNet-101和WideResNet。实验证明该网络比最先进的DeepLab V3+的mIoU高出1.5%，F-boundary-score高出4%，并在细小物体的预测上mIoU有着7%的提升。论文进一步评价了距离相机不同远近的物体的性能，在最远的物体上有6%的提升。</p>
+					
+					<h3 class="mt-5 mb-3">Related Work</h3>
+					<p>语义分割：一些先进的语义分割网络的发展都是基于CNN的，后面阐述了CNN的发展过程。</p>
+					<p>多任务学习：本文的主要目标不是训练多任务网络，而是实施一种利用分割和边界预测任务之间的二元性的结构化表示。</p>
+					<p>门卷积：源自语言模型，这里借鉴到卷积中。</p>
+					
+					<h3 class="mt-5 mb-3">Gated Shape CNN</h3>
+					<p>这一部分主要介绍网络的结构。如结构图所示，网络的两个支流的后面融合模块集成。第一支流regular stream（即上文中classical stream）就是标准的CNN分割网络，第二支流shape stream用来处理语义边界的形状信息。通过仔细设计的门卷积层(GCL)和局部监督，强制成形流只处理与边界有关的信息。</p>
+					<p>Regular stream：可以采用由VGG/ResNet等改编的全卷积网络，论文中采用的是类ResNet网络。</p>
+					<p>Shape stream：通过多个残差块和GCL交叉处理。</p>
+					<p>Fusion module：采用ASPP融合两个支流，允许我们保存多尺度上下文信息，并且被证明是现有技术语义分割网络中的基本组件。</p>
+					
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-Attention.jpg"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-Attention.jpg" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">Gated Shape CNN 机制原理图</figcaption>
+					</figure>
+
+					<h3 class="mt-5 mb-3">Experiment Results</h3>
+					<p>采用DeepLab V3+作为基准，GSCNN的主体采用ResNet-50、ResNet-101和WideResNet，数据集采用Cityscapes，评价指标采用mIoU（用于评价预测区域的准确率）、F-score（用于评价边界）和基于距离的mIoU。</p>
+					<p>定性评价：</p>
+
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-qualitative-semantic-result.jpg"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-qualitative-semantic-result.jpg" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">在Cityscapes test set上的分割效果</figcaption>
+					</figure>
+
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-qualitative-semantic-boundary.jpg"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-qualitative-semantic-boundary.jpg" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">在Cityscapes test set上预测的高质量边界</figcaption>
+					</figure>
+
+					<p>定量评价：</p>
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-result-table.png"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-result-table.png" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">在Cityscapes数据集上IoU和F-score评价结果</figcaption>
+					</figure>
+
+					<p>表1中GSCNN与LRR/DeepLab V2/DeepLab V3+等网络的分割性能进行对比，可以看到GSCNN在mIoU性能上要高出2%左右，特别是细小物体上有显著的提升，如traffic signs, traffic lights, poles, motorcycles等。</p>
+					<p>表2中GSCNN与DeepLab V3+的边界预测准确率F-score进行对比，阈值分别设置为12px~3px，在最严格的的要求上有着4%的提升。</p>
+
+					<figure class="blog-banner">
+							<a href="assets/images/blog/GatedSCNN/Gated-SCNN-distance-result.jpg"><img class="img-fluid" src="assets/images/blog/GatedSCNN/Gated-SCNN-distance-result.jpg" alt="image"></a>
+							<figcaption class="mt-2 text-center image-caption">不同裁剪因子的基于距离的评价</figcaption>
+					</figure>
+					
+					<p>上图展示了不同距离的mIoU评价，距离越远（0~400），其mIoU提升的效果越高，在距离400左右mIoU提升了接近6%。</p>
+
+					<p><small>转载请联系：<a href="mailto:zhoudengji19@mails.ucas.edu.cn">zhoudengji19@mails.ucas.edu.cn</a></small></p>
+
+			    </div>
+				    
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="DANet.html">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="RS-download.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+				
+		    </div><!--//container-->
+	    </article>
+	    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+				<small class="copyright">&copy 2019 • ZhouDengji</small>
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+    
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">Choose Colour</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->
+
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js"></script>
+    
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="assets/js/demo/style-switcher.js"></script>     
+    
+
+</body>
+</html> 
+

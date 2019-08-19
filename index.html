@@ -1,318 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+<html lang="en"> 
+<head>
     <title>中国科学院大学-周登继</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head> 
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">UCAS-ZDJ</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
 
-    <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
+					
+					<div class="bio mb-2"><h5>周登继</h5></div>
+					<div class="bio mb-3"><h5>中国科学院大学</h5></div>
+					
+					<a href="https://blog.csdn.net/qq_37935516" target="_blank" class="nav-item text-danger">CSDN</a>&nbsp;&nbsp;
+					<a href="https://github.com/zzzhoudj" target="_blank" class="nav-item text-danger">GitHub</a>
+			        <hr> 
+				</div>
+				
+				<ul class="navbar-nav flex-column text-left">
+					<li class="nav-item active">
+					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>博客主页 <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="blog-list.html"><i class="fas fa-bookmark fa-fw mr-2"></i>博客列表</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>关于我</a>
+					</li>
+				</ul>
+				
+				<div class="my-2 my-md-3">
+				    <a class="btn btn-primary" href="mailto:zhouengji19@mails.ucas.edu.cn">邮件联系</a>
+				</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h2 class="heading">欢迎来到我的博客，记录科研生活中的点滴。</h2>
+			    <!-- <div class="intro"></div> -->
+			    <!-- <form class="signup-form form-inline justify-content-center pt-3">
+                    <div class="form-group">
+                        <label class="sr-only" for="semail">Your email</label>
+                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form> -->
+		    </div><!--//container-->
+	    </section>
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+			    <div class="item mb-5">
+				    <div class="media">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/CCNet/CCNet-attention.jpg" alt="image">
+					    <div class="media-body">
+						    <h3 class="title mb-1"><a href="CCNet.html">CCNet：Criss-Cross Attention for semantic Segmentation</a></h3>
+						    <div class="meta mb-1"><span class="date">Published: 2019-08-17</span><span class="time">15 min read</span></div>
+						    <div class="intro">本文也是Self-Attention机制的文章，该论文在捕获long-range上下文信息的同时提高了计算性能并减少了GPU内存，在Cityscapes、ADE20K和MSCOCO数据集上取得了先进性能。</div>
+						    <a class="more-link" href="CCNet.html">Read more &rarr;</a>
+					    </div>
+				    </div>
+				</div>
+				<div class="item mb-5">
+						<div class="media">
+							<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/DANet/DANet-thumb.jpg" alt="image">
+							<div class="media-body">
+								<h3 class="title mb-1"><a href="DANet.html">【CVPR 2019】Dual Attention Network for Scene Segmentation</a></h3>
+								<div class="meta mb-1"><span class="date">Published: 2019-08-16</span><span class="time">10 min read</span></div>
+								<div class="intro">Attention机制在NLP上取得进展后于近年被引入CV中也发挥着重要的作用。这篇是采用Self-Attention机制的用于场景分割的文章，通过引入自注意力机制(self-attention mechanism) 在特征的空间维度和通道维度分别抓取特征之间的全局依赖关系，增强特征的表达能力，并在一些数据集上显著提升了性能。</div>
+								<a class="more-link" href="DANet.html">Read more &rarr;</a>
+							</div><!--//media-body-->
+						</div><!--//media-->
+					</div><!--//item-->
+				<div class="item mb-5">
+						<div class="media">
+							<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/GatedSCNN/Gated-SCNN-thumb.jpg" alt="image">
+							<div class="media-body">
+								<h3 class="title mb-1"><a href="Gated-SCNN.html">【ICCV 2019】Gated-SCNN: Gated Shape CNNs for Semantic Segmentation</a></h3>
+								<div class="meta mb-1"><span class="date">Published: 2019-08-12</span><span class="time">10 min read</span></div>
+								<div class="intro">这篇论文是2019年语义分割领域的最新成果，采用双流CNN和ASPP进行语义分割处理，在细小的物体上有着很大的提升。</div>
+								<a class="more-link" href="Gated-SCNN.html">Read more &rarr;</a>
+							</div><!--//media-body-->
+						</div><!--//media-->
+					</div><!--//item-->
+				<div class="item mb-5">
+						<div class="media">
+							<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/RSDownload/RSDownload-thumb.jpg" alt="image">
+							<div class="media-body">
+								<h3 class="title mb-1"><a href="RS-download.html">遥感数据下载网站汇总</a></h3>
+								<div class="meta mb-1"><span class="date">Published: 2019-05-17</span><span class="time">10 min read</span></div>
+								<div class="intro">Landsat/Sentinel/GF/ZY等中高分辨率遥感影像下载、遥感影像产品下载网址汇总</div>
+								<a class="more-link" href="RS-download.html">Read more &rarr;</a>
+							</div><!--//media-body-->
+						</div><!--//media-->
+					</div><!--//item-->
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link d-none rounded-left" href="#">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded" href="blog-list.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+				
+		    </div>
+	    </section>
+	    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+		   
+	       <small class="copyright">&copy 2019 • ZhouDengji</small>
+		   
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+    
+    
+    
+    
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">切换主题</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->
 
-  </head>
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
 
-  <body id="page-top">
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="assets/js/demo/style-switcher.js"></script>     
+    
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Start Bootstrap</span>
-        <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
-        </span>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger">周登继</a>
-              </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">关于</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education">教育经历</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards">奖励/荣誉</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">项目经历</a>
-          </li>
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests">期刊</a>
-          </li>
-          
-        </ul>
-      </div>
-    </nav>
+</body>
+</html> 
 
-    <div class="container-fluid p-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-        <div class="my-auto">
-          <h4 class="mb-0">周登继</h4>
-          <div class="subheading mb-5">中国科学院大学
-            <a href="mailto:zhoudengji19@mails.ucas.edu.cn">zhoudengji19@mails.ucas.edu.cn</a>
-          </div>
-          <p class="mb-5">中国科学院大学的在读硕士研究生，研究兴趣为语义分割（Semantic Segmentation）、超分辨率技术（Super Resolution）、变化检测（Change Detection）和遥感图像处理（Remote Sensing Image Processing）。</p>
-          <p><a href='https://blog.csdn.net/qq_37935516' target="_blank">CSDN</a></p>
-          <!-- <ul class="list-inline list-social-icons mb-0">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul> -->
-        </div>
-      </section>
-
-      
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
-        <div class="my-auto">
-          <h3 class="mb-5">教育经历</h3>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">中国矿业大学</h5>
-              <div class="mb-3">理学学士</div>
-              <div>地理信息科学</div>
-              <p>GPA: 4.21/5.0</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2015.08 - 2019.06</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">中国科学院大学</h5>
-              <div class="mb-3">遥感信息智能提取</div>
-              <p>GPA: --</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2019.08 - 2022.06</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-        <div class="my-auto">
-          <h2 class="mb-5">Skills</h2>
-
-          <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-          <ul class="list-inline list-icons">
-            <li class="list-inline-item">
-              <i class="devicons devicons-html5"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-css3"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-javascript"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-jquery"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-sass"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-less"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-bootstrap"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-wordpress"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-grunt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-gulp"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-npm"></i>
-            </li>
-          </ul>
-
-          <div class="subheading mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
-          </ul>
-        </div>
-      </section> -->
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-        <div class="my-auto">
-          <h3 class="mb-5">奖励、荣誉和论文</h3>
-          <div class="subheading mb-3">HONOR</div>
-          <ul class="fa-ul mb-0">
-            <li>中国矿业大学优秀毕业生</li>
-            <li>
-              2016-2017年度国家奖学金</li>
-          </ul>
-          <hr>
-          <div class="subheading mb-3">PAPER</div>
-          <ul class="fa-ul mb-0">
-            <li>努力撰写中...</li>
-          </ul>
-          <hr>
-          <div class="subheading mb-3">SOFTWARE COPYRIGHT</div>
-          <ul class="fa-ul mb-0">
-            <li>煤层自燃检测与大气污染分析系统</li>
-          </ul>
-          <hr>
-        </div>
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-        <div class="my-auto">
-          <h3 class="mb-5">项目经历</h3>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">基于多源热红外遥感数据的煤层自燃监测及大气污染分析</h5>
-              <div class="mb-3">[参与]省级大学生创新项目</div>
-              <p>基于Landsat的地表温度 (LST)反演、光学气溶胶厚度 (AOD)反演、煤田温度异常区提取。</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2017.04 - 2018.04</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">基于卷积神经网络的高分遥感影像城市建筑物提取方法研究</h5>
-              <div class="mb-3">[主持]中国科学院遥感与数字地球研究所“科创计划”项目</div>
-              <p>计算机视觉、语义分割、高分辨率遥感影像、高分二号、建筑物提取</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2018.06 - 2019.06</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">北京城市副中心中高层建筑分布高清解析</h5>
-              <div class="mb-3">[主持]</div>
-              <p>计算机视觉、语义分割、高分辨率遥感影像、高分二号、建筑物提取</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2018.12 - 2019.04</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h5 class="mb-0">遥感图像地面区域变化的结构化建模与检测方法研究</h5>
-              <div class="mb-3">[参与]国家自然基金重点国际(地区)合作项目</div>
-              <p>计算机视觉、高分辨率遥感影像、高分二号、建筑物提取、语义分割、变化检测、超分辨率技术</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2019.01 - 至今</span>
-            </div>
-          </div>
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
-        <div class="my-auto">
-          <h3 class="mb-5">遥感期刊</h3>
-          <ul>
-            <li>Remote Sensing of Environment (RSE)</li>
-            <li>ISPRS Journal of Photogrammetry and Remote Sensing (ISPRS)</li>
-            <li>IEEE Transactions on Geoscience and Remote Sensing (IEEE TGRS)</li>
-            <li>IEEE Geoscience and Remote Sensing Magazine (IEEE GRSM)</li>
-            <li>IEEE Geoscience and Remote Sensing Letters (IEEE GRSL)</li>
-            <li>IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing (IEEE JSTAR)</li>
-            <li>International Journal of Applied Earth Observation and Geoinformation (IJAG)</li>
-            <li>Remote Sensing (RS)</li>
-            <li>Nature Geoscience (NG)</li>
-            <li>International Journal of Remote Sensing(IJRS)</li>
-            <li>International Journal of Digital Earth (IJDE)</li>
-            <li>Remote Sensing Letters (RSL)</li>
-            <li>Journal of Applied Remote Sensing (JARS)</li>
-            <li>Photogrammetric Engineering & Remote Sensing (PE&RS)</li>
-            <li>ISPRS International Journal of Geo-Information (IJGI)</li>
-            <li>International Journal of Geographical Information Science(IJGIS)</li>
-            <li>Geo-spatial Information Science</li>
-          </ul>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/resume.min.js"></script>
-
-  </body>
-
-</html>
