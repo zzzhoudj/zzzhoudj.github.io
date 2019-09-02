@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>PKU-ISA</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">UCAS-ZDJ</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
+					
+					<div class="bio mb-2"><h5>周登继</h5></div>
+					<div class="bio mb-3"><h5>中国科学院大学</h5></div>
+					<!-- <ul class="social-list list-inline py-3 mx-auto">
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+					</ul> -->
+					<a href="https://blog.csdn.net/qq_37935516" target="_blank" class="nav-item text-danger">CSDN</a>&nbsp;&nbsp;
+					<a href="https://github.com/zzzhoudj" target="_blank" class="nav-item text-danger">GitHub</a>
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-left">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>博客主页 <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="blog-list.html"><i class="fas fa-bookmark fa-fw mr-2"></i>博客列表</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>关于我</a>
+						</li>
+					</ul>
+					
+					<div class="my-2 my-md-3">
+						<a class="btn btn-primary" href="mailto:zhoudengji19@mails.ucas.edu.cn">邮件联系</a>
+					</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">Interlaced Sparse Self-Attention for Semantic Segmentation</h2>
+				    <div class="meta mb-3"><span class="date">Published: 2019-09-02</span><span class="time">15 min read</span></div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				    <!-- <figure class="blog-banner">
+				        <a href="#"><img class="img-fluid" src="assets/images/blog/blog-post-banner.jpg" alt="image"></a>
+				        <figcaption class="mt-2 text-center image-caption">Image Credit: <a href="#?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
+					</figure> -->
+					<blockquote>
+							<p><small>本文是语义分割领域的一篇新作，作者运用interlace机制将密集相似矩阵A分解为两个稀疏相似矩阵AL和AS的乘积。该方法在Cityscapes/ADE20K/LIP/PASCAL VOC 2012/COCO等数据集上与PSPNet/PSANet、以及较新的<a href="https://zzzhoudj.github.io/DANet.html" target="_blank">DANet</a>/<a href="https://zzzhoudj.github.io/CCNet.html" target="_blank">CCNet</a>对比，结果表明该网络能够节省大量的内存和计算量，特别是高分辨率特征图的时候，并且在六大数据集上也取得了不错的效果。</small></p>
+							<p><small>论文链接：<a href="https://arxiv.org/abs/1907.12273" target="_blank">https://arxiv.org/abs/1907.12273</a></small></p>
+					</blockquote>
+					<hr>
+					<b></b>
+					<p></p>
+					<a href="" target="_blank"></a>
+					
+					<h3 class="mt-5 mb-3">Abstract</h3>
+				    <p>本文提出了一种基于自注意力机制的称为交叉稀疏自注意力方法（interlaced sparse self-attention）来提升语义分割中的效率。该方法的主要思想是将密集相似矩阵分解为两个稀疏相似矩阵的乘积。用两个连续的注意模块，每个模块估算一个稀疏的相似矩阵。<b>第一个注意模块</b>用来估计有着较长空间间距距离的position子集的相似性，<b>第二个注意模块</b>用来估计有着较短空间间隔距离的position子集的相似性。<b>设计这两个注意模块使得每个位置都能接收到来自其他所有位置的信息</b>。与一些原始的自注意力模型相比，我们的方法减少了计算力和内存复杂度，特别是处理高分辨率特征图时。我们通过实验验证了该方法在六个具有挑战性的语义分割基准上的有效性。</p>
+					
+					<h3 class="mt-5 mb-3">Introduction</h3>
+					<p>长距离依赖（Long-range dependency）在各种计算机视觉任务中都有着基本作用。深度卷积神经网络通过叠加多个卷积层获得长距离依赖。根据<a href="https://arxiv.org/abs/1812.01243" target="_blank">Shen等人</a>的工作，<b>我们需要叠加近百个连续的3*3卷积层来获得256*256输入的任意两个位置的依赖关系</b>。由此可见，通过叠加的方式获得依赖关系会导致网络的加深，实际价值不大。</p>
+					<p>最近的<a href="https://arxiv.org/abs/1706.03762" target="_blank">自注意力</a>（或者<a href="https://arxiv.org/abs/1711.07971" target="_blank">非局部non-local</a>）机制提出了一种模型用来获得长距离依赖，它通过所有输入位置计算输出位置的上下文信息实现。采用一个简单的自注意力机制层可以获得任意两个输入位置的依赖关系。自注意力机制被用于视频理解、目标检测、语义分割和行人再识别等视觉任务中。假设输入尺寸大小为N，则自注意力机制的计算复杂度大约为O(N^2)，若是目标检测或者语义分割等高分辨率的输入那个任务的成本就会很大。</p>
+					<p>高分辨率的输入在许多视觉任务中是获得较好表现的基础，但是会占用大量的计算和内存成本，阻碍自注意力机制在实际应用中的潜在好处。例如最近的工作<a href="https://arxiv.org/abs/1809.02983" target="_blank">DANet</a>/<a href="https://arxiv.org/abs/1809.00916" target="_blank">OCNet</a>/<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Co-Occurrent_Features_in_Semantic_Segmentation_CVPR_2019_paper.pdf" target="_blank">CFNet</a>等网络均采用自注意力机制用于语义分割，至少需要64G内存的GPU训练例如8的小batch size。总的来说，我们认为，如何降低自我注意机制的计算和内存成本，对于各种对计算和内存成本敏感的视觉任务具有很大的实用价值。</p>
+					<p>考虑到计算每个输出位置和所有输入位置的相似性需要大量的计算和内存成本从而得到密集相似矩阵A，我们提出了一种简单而有效的方法将密集相似矩阵A的计算分解为包括AL和AS在内的两个稀疏相似矩阵的乘积。我们从理论上证明了该方法的计算复杂度比传统的自注意机制要小得多，从下图中可以看出GPU内存消耗（MB）、计算成本（GFLOPs）和时间成本（ms）的比较：</p>
+
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-complexity.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-complexity.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">ISA与SA机制相比的GPU内存、计算成本和时间成本的消耗</figcaption>
+					</figure>
+					
+					<p>我们的方法是受到交错机制的启发。首先，我们将<b>所有的输入位置分为Q个大小相等的子集，每个子集中包含P个位置(N=P*Q)</b>。对于长距离注意模块，我们从<b>每一个子集中采样一个位置构建一个含有Q个位置的新子集（因为原先划分为Q个子集，每个子集拿出一个位置，就有了Q个位置），根据这样采样策略能够获得P个这样的子集</b>。这样每个构造子集中的位置是长空间间隔距离的位置。我们在每个子集上采用自注意力机制计算稀疏相似性矩阵AL。对于短距离注意模块，<b>直接在原始的Q个子集上（相当于在long-range模块permute之后再permute回来）计算稀疏相似性矩阵AS</b>。融合这两个机制，便可以将<b>信息从每个输入位置传播到所有输出位置</b>。</p>
+					
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-network.jpg"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-network.jpg" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">ISA机制原理图</figcaption>
+					</figure>
+					<p>本文的主要贡献如下：</p>
+					<ul>
+						<li>提出了交错稀疏自注意力方法更有效的捕获长距离依赖；</li>
+						<li>证明了交错稀疏自注意力方法在语义分割上的有效性，与传统的自注意力机制模型相比得到了类似的或者更好分割效果；</li>
+						<li>与其他机制（如CNGL/RCCA）相比较说明该方法的优点。</li>
+					</ul>
+					
+					<h3 class="mt-5 mb-3">Approach</h3>
+					<p>这部分回顾自注意力机制并说明interlaced sparse self-attention方法的细节，并展示了基于PyTorch上的短代码。</p>
+					<h4 class="mt-5 mb-3">Self-attention</h4>
+					<p>自注意力机制可以用下面两个公式来描述：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-SA.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-SA.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">Self-Attention公式</figcaption>
+					</figure>
+					<p>式中X是输入的特征图，A是密集相似性矩阵，Z是输出的特征图。我们将X,Z变量reshape成(N*C)，A(N*N)，其中N是像元的个数，C是波段数。A中的每个元素就记录了任意两个位置的相似性。自注意力机制用了两个不同的转换函数θ和φ将输入变量转换成低维空间，θ(X)、φ(X)的形状是(N*(C/2))，低维空间的点积用来计算密集相似矩阵A。缩放因子d被用于解决Softmax函数中的小梯度问题并且d=C/2。自注意力机制用g函数学习更好的嵌入，g(X)∈(N*C)。</p>
+					<h4 class="mt-5 mb-3">Interlaced Sparse Self-Attention</h4>
+					<p>本文提出的交错稀疏自注意力的<b>核心是将密集相似矩阵A采用自注意力机制分解为两个稀疏相似矩阵AL和AS的乘积</b>。我们说明如何利用长距离注意模块计算AL和短距离模块计算AS。通过长短距离模块的结合，我们能够所有的输入位置传递信息到每个输出位置。</p>
+					<p><b>Long-range Attention</b>的重点是在具有较长空间距离的子集上应用Self-attention。如Figure3，将输入的特征图X重新排列计算XL=<i>Permute</i>(X)。然后将XL划分为P个块每个块包含Q个相邻的位置（N=P*Q）：XL=[(X1L)T,(X2L)T...(XpL)T]，每个XpL是XL的(Q*C)大小的子集。在每个XpL上用self-attention:</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-LR.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-LR.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">Long-Range注意模块运用self-attention</figcaption>
+					</figure>
+					<p>（Q*Q）大小的ApL是建立在XpL上的小的相似矩阵，(Q*C)大小的ZpL随之更新。其他所有参数与self-attention中保持一致。</p>
+					<p>最后，将所有不同块中的ZpL融合得到输出ZL=[(Z1L)T,(Z2L)T...(ZpL)T]。长距离注意模块的AL如下图所示，可以看到所有对角位置的均为非零。</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-LRMa.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-LRMa.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">Long-range注意模块计算得到的稀疏相似矩阵</figcaption>
+					</figure>
+
+					<p><b>Short-range Attention</b>模块与Long-range attention模块相似。</p>
+					<p><b>Complexity</b>假定输入的特征图大小是H*W*C，与self-attention机制对比分析计算、内存成本如下图：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-flops.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-flops.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">Long-range注意模块计算得到的稀疏相似矩阵</figcaption>
+					</figure>
+
+					
+					<h3 class="mt-5 mb-3">Results</h3>
+					<p>主体网络采用ResNet-50/ResNet-101，与其他self-attention网络一样去掉最后两个下采样层并换成空洞卷积，这样输出的特征图便是输入特征图的1/8大小。并采用3*3卷积对输出特征图减少波段。然后采用interlaced sparse self-attention模块于特征图上得到输出的特征图Z(512*H*W)，并直接在Z上预测分割图。</p>
+					<p>在Cityscapes上的结果：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-cityscapes.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-cityscapes.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">在Cityscapes数据集上的测试结果</figcaption>
+					</figure>
+					<p>在ADE20K上的结果：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-ade20k.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-ade20k.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">在ADE20K数据集上的测试结果</figcaption>
+					</figure>
+					<p>在Cityscapes和ADE20K数据集上的效果：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-cityscape-ade20k.jpg"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-cityscape-ade20k.jpg" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">在Cityscapes（前两行）和ADE20K数据集上的效果（后两行）</figcaption>
+					</figure>
+					<p>与Mask-RCNN实例分割效果对比：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-coco.jpg"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-coco.jpg" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">在COCO与Mask-RCNN实例分割效果对比</figcaption>
+					</figure>
+					<p>效率比较：</p>
+					<figure class="blog-banner"  style="text-align:center">
+						<a href="assets/images/blog/PKU-ISA/ISA-mem.png"><img class="img-fluid" src="assets/images/blog/PKU-ISA/ISA-mem.png" alt="image"></a>
+						<figcaption class="mt-2 text-center image-caption">与其他方法的效率对比</figcaption>
+					</figure>
+
+					<p><small>转载请联系：<a href="mailto:zhoudengji19@mails.ucas.edu.cn">zhoudengji19@mails.ucas.edu.cn</a></small></p>
+
+			    </div>
+				    
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="blog-list.html">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="MultiThreading.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+				
+		    </div><!--//container-->
+		</article>
+		    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+				<small class="copyright">&copy 2019 • ZhouDengji</small>
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+    
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">Choose Colour</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->
+
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js"></script>
+    
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="assets/js/demo/style-switcher.js"></script>     
+    
+
+</body>
+</html> 
+
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e8873c31637d2228b528f6f1a1ca10eb";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
