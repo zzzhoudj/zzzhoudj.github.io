@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Python多线程</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">UCAS-ZDJ</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
+					
+					<div class="bio mb-2"><h5>周登继</h5></div>
+					<div class="bio mb-3"><h5>中国科学院大学</h5></div>
+					<!-- <ul class="social-list list-inline py-3 mx-auto">
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+					</ul> -->
+					<a href="https://blog.csdn.net/qq_37935516" target="_blank" class="nav-item text-danger">CSDN</a>&nbsp;&nbsp;
+					<a href="https://github.com/zzzhoudj" target="_blank" class="nav-item text-danger">GitHub</a>
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-left">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>博客主页 <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="blog-list.html"><i class="fas fa-bookmark fa-fw mr-2"></i>博客列表</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>关于我</a>
+						</li>
+					</ul>
+					
+					<div class="my-2 my-md-3">
+						<a class="btn btn-primary" href="mailto:zhoudengji19@mails.ucas.edu.cn">邮件联系</a>
+					</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">Python多线程那些事儿</h2>
+				    <div class="meta mb-3"><span class="date">Published: 2019-08-28</span><span class="time">15 min read</span></div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				    <!-- <figure class="blog-banner">
+				        <a href="#"><img class="img-fluid" src="assets/images/blog/blog-post-banner.jpg" alt="image"></a>
+				        <figcaption class="mt-2 text-center image-caption">Image Credit: <a href="#?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
+					</figure> -->
+					<!-- <blockquote>
+							<p><small>本文也是Self-Attention机制的文章，该论文在捕获long-range上下文信息的同时提高了计算性能并减少了GPU内存，在Cityscapes、ADE20K和MSCOCO数据集上取得了先进性能。</small></p>
+					</blockquote> -->
+					<!-- <hr> -->
+					<p>对于多线程的理解，通俗的讲就是程序在同一时间执行多个任务。与多线程相对的就是单线程，同一时间只做一件事，要么是听音乐，要么是看电影；而多线程则是可以一边听音乐，又可以一边看电影。</p>
+					
+					<h3 class="mt-1 mb-3">单线程</h3>
+					<p>首先举一个单线程的例子：</p>
+					<pre>
+						<code>
+# example 1
+ 
+from time import ctime, sleep
+ 
+def music():
+    for i in range(2):
+        print('Start Listening Music: %s' % ctime())
+        sleep(1)
+        print('Finish Listening Music: %s' % ctime())
+ 
+def movie():
+    for i in range(2):
+        print('Start Watching Movie: %s' % ctime())
+        sleep(5)
+        print('Finish Watching Movie: %s' % ctime())
+ 
+if __name__ == '__main__':
+    music()
+    movie()
+    print('All spent: %s' % ctime())
+						</code>
+						<code>
+# result 1
+Start Listening Music: Mon Aug 26 19:22:21 2019
+Finish Listening Music: Mon Aug 26 19:22:22 2019
+Start Listening Music: Mon Aug 26 19:22:22 2019
+Finish Listening Music: Mon Aug 26 19:22:23 2019
+Start Watching Movie: Mon Aug 26 19:22:23 2019
+Finish Watching Movie: Mon Aug 26 19:22:28 2019
+Start Watching Movie: Mon Aug 26 19:22:28 2019
+Finish Watching Movie: Mon Aug 26 19:22:33 2019
+All spent: Mon Aug 26 19:22:33 2019
+						</code>
+					</pre>
+					<p>上面这个例子是听音乐和看电影分开处理的，先听音乐，听了两首，每首1秒钟；然后是看电影，看了两部，每部5秒钟。程序的总共执行了12秒。</p>
+					<h3 class="mt-1 mb-3">多线程</h3>
+					<p>多线程就是将听音乐和看电影同时进行。在Python中多线程使用thread和threading模块。thread模块提供了基本的线程和锁定支持，而threading模块提供了更高级别，功能更全面的线程管理。</p>
+					<blockquote>
+							<p><small><i>"更高级别的 threading模块更为先进，对线程支持更为完善，而且使用 thread模块里的属性有可能会与 threading出现冲突。其次，低级别的 thread模块的同步原语很少（实际上只有一个），而 threading模块则有很多。"</i></small></p>
+							<p class="text-right"><small><i> ——《 Python核心编程》</i></small></p>
+					</blockquote>
+					<p>所以在这里推荐使用threading模块来进行python多线程。</p>
+					<p>在threading模块中主要提供了一下方法：</p>
+					<table  class="table table-bordered">
+						<thead>
+							<tr>
+							  <th>方法与属性</th>
+							  <th>描述</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>current_thread()</td>
+							  <td>返回当前线程</td>
+							</tr>
+							<tr>
+							  <td>active_count()</td>
+							  <td>返回当前活跃的线程数，1个主线程+n个子线程</td>
+							</tr>
+							<tr>
+							  <td>get_ident()</td>
+							  <td>返回当前线程</td>
+							</tr>
+							<tr>
+								<td>enumerater()</td>
+								<td>返回当前活动 Thread 对象列表</td>
+							  </tr>
+							  <tr>
+								<td>main_thread()</td>
+								<td>返回主 Thread 对象</td>
+							  </tr>
+							  <tr>
+								<td>settrace(func)</td>
+								<td>为所有线程设置一个 trace 函数</td>
+							  </tr>
+							  <tr>
+								<td>setprofile(func)</td>
+								<td>为所有线程设置一个 profile 函数</td>
+							  </tr>
+							  <tr>
+								<td>stack_size([size])</td>
+								<td>返回新创建线程栈大小；或为后续创建的线程设定栈大小为 size</td>
+							  </tr>
+							  <tr>
+								<td>TIMEOUT_MAX</td>
+								<td>Lock.acquire(), RLock.acquire(), Condition.wait() 允许的最大超时时间</td>
+							  </tr>
+						  </tbody>
+					</table>
+					<h4 class="mt-1 mb-3">threading.Thread类</h4>
+					<p>对于执行多线程，使用的是Thread类，它的定义如下：</p>
+					<code>threading.Thread(self, group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)</code>
+					<ul>
+						<li>参数group是预留的，用于将来扩展；</li>
+						<li>参数target是一个可调用对象，在线程启动后执行；</li>
+						<li>参数name是线程的名字。默认值为“Thread-N“，N是一个数字；</li>
+						<li>参数args和kwargs分别表示调用target时的参数列表和关键字参数；</li>
+						<li>daemon表示是否是守护线程，默认为False，守护线程是指当主线程结束后该子线程也会随之结束，是主线程的守护。</li>
+					</ul>
+					<p>下面是执行多线程的一个例子：</p>
+					<pre><code>
+# example 2
+import threading
+from time import ctime, sleep
+ 
+def music():
+    for i in range(2):
+        print('%s Start Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+        sleep(1)
+        print('%s Finish Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+ 
+ 
+def movie():
+    for i in range(2):
+        print('%s Start Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+        sleep(5)
+        print('%s Finish Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+ 
+ 
+if __name__ == '__main__':
+    threads = []
+    t1 = threading.Thread(target=music, daemon=True)
+    t2 = threading.Thread(target=movie, daemon=True)
+    threads.append(t1)
+    threads.append(t2)
+ 
+    for t in threads:
+        t.start()
+    print('All spent: %s' % ctime())
+					</code>
+					<code>
+# result 2
+Thread-1 Start Listening Music: Mon Aug 26 19:40:49 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:40:49 2019
+All spent: Mon Aug 26 19:40:49 2019
+					</code>
+				</pre>
+					<p>从上面的结果可以看到，这并不是我们想要的结果，因为Thread-1和Thread-2才刚执行还没执行完毕程序就已经终止。这是因为两个子线程的daemon属性都设置成True，成为主线程的守护线程。那么我们将daemon属性设置成False能否得到想要的结果呢？</p>
+					<h4 class="mt-1 mb-3">daemon属性</h4>
+					<pre>
+						<code>
+# example 3
+import threading
+from time import ctime, sleep
+	
+def music():
+	for i in range(2):
+		print('%s Start Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+		sleep(1)
+		print('%s Finish Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+	
+	
+def movie():
+	for i in range(2):
+		print('%s Start Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+		sleep(5)
+		print('%s Finish Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+	
+	
+if __name__ == '__main__':
+	threads = []
+	t1 = threading.Thread(target=music)
+	t2 = threading.Thread(target=movie)
+	threads.append(t1)
+	threads.append(t2)
+	
+	for t in threads:
+		t.start()
+	print('All spent: %s' % ctime())
+						</code>
+						<code>
+# result 3
+Thread-1 Start Listening Music: Mon Aug 26 19:47:05 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:47:05 2019
+All spent: Mon Aug 26 19:47:05 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:47:06 2019
+Thread-1 Start Listening Music: Mon Aug 26 19:47:06 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:47:07 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:47:10 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:47:10 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:47:15 2019
+						</code>
+					</pre>
+					<p>从结果中可以看到这并不是我们想要的结果。虽然子线程Thread-1和Thread-2同时开始，但是子线程还没结束主线程（All spent）已经结束，我们想要的是主线程在所有子线程结束后才结束。这就需要用到join()方法。</p>
+					<h4 class="mt-1 mb-3">join()方法</h4>
+					<p>join()方法的作用是在子线程完成运行之前，这个子线程的父线程将一直被阻塞。简而言之就是希望主线程等等子线程，直到子线程执行完毕。</p>
+
+					<pre>
+						<code>
+# example 4
+import threading
+from time import ctime, sleep
+ 
+def music():
+    for i in range(2):
+        print('%s Start Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+        sleep(1)
+        print('%s Finish Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+ 
+def movie():
+    for i in range(2):
+        print('%s Start Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+        sleep(5)
+        print('%s Finish Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+ 
+if __name__ == '__main__':
+    threads = []
+    t1 = threading.Thread(target=music, daemon=True)
+    t2 = threading.Thread(target=movie, daemon=True)
+    threads.append(t1)
+    threads.append(t2)
+ 
+    for t in threads:
+        t.start()
+    t.join()
+    print('All spent: %s' % ctime())
+						</code>
+						<code>
+# result 4
+Thread-1 Start Listening Music: Mon Aug 26 19:52:25 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:52:25 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:52:26 2019
+Thread-1 Start Listening Music: Mon Aug 26 19:52:26 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:52:27 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:52:30 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:52:30 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:52:35 2019
+All spent: Mon Aug 26 19:52:35 2019
+						</code>
+					</pre>
+					<p>
+					可以看到整个过程用了10s，比单线程快了2s，这是因为看电影用了10s，在看电影的过程中听音乐已经结束，等电影结束后主进程才结束。如果将看电影调整为4s呢？
+					</p>
+					<pre>
+							<code>
+# example 5
+import threading
+from time import ctime, sleep
+	
+def music():
+	for i in range(2):
+		print('%s Start Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+		sleep(4)
+		print('%s Finish Listening Music: %s' % (threading.current_thread().getName(), ctime()))
+	
+def movie():
+	for i in range(2):
+		print('%s Start Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+		sleep(5)
+		print('%s Finish Watching Movie: %s' % (threading.current_thread().getName(), ctime()))
+	
+if __name__ == '__main__':
+	threads = []
+	t1 = threading.Thread(target=music, daemon=True)
+	t2 = threading.Thread(target=movie, daemon=True)
+	threads.append(t1)
+	threads.append(t2)
+	
+	for t in threads:
+		t.start()
+	print('Start Main Thread: %s' % ctime())
+	sleep(2)
+	t.join()
+	print('Finish Main Thread: %s' % ctime())
+	print('All spent: %s' % ctime())
+							</code>
+							<code>
+# result 5
+Thread-1 Start Listening Music: Mon Aug 26 19:55:35 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:55:35 2019
+Start Main Thread: Mon Aug 26 19:55:35 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:55:39 2019
+Thread-1 Start Listening Music: Mon Aug 26 19:55:39 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:55:40 2019
+Thread-2 Start Watching Movie: Mon Aug 26 19:55:40 2019
+Thread-1 Finish Listening Music: Mon Aug 26 19:55:43 2019
+Thread-2 Finish Watching Movie: Mon Aug 26 19:55:45 2019
+Finish Main Thread: Mon Aug 26 19:55:45 2019
+All spent: Mon Aug 26 19:55:45 2019
+							</code>
+						</pre>
+					<p>
+						可以看到虽然听音乐增加到了4s，但是总过程还是10s，这是取决于两个子线程时间最长的那一个，即看电影。
+					</p>
+					<P>从上面的例子中可以总结出，daemon是将该子线程设置为守护线程，join()方法的作用是阻塞主线程直到子线程结束。</P>
+					
+					<h3 class="mt-1 mb-3">自定义线程</h3>
+					<p>自定义线程的步骤：</p>
+					<ol>
+						<li>继承Thread类</li>
+						<li>重写__init__方法添加自己的属性，使用super加载父类属性</li>
+						<li>重写run方法</li>
+					</ol>
+					<pre>
+							<code>
+import threading
+
+class MyThreading(threading.Thread):
+	
+	def __init__(self, func, arg):
+		super(MyThreading,self).__init__()
+		self.func = func
+		self.arg = arg
+	
+	def run(self):
+		self.func(self.arg)
+	
+def my_func(args):
+	"""
+	to do
+	"""
+	pass
+	
+obj = MyThreading(my_func, 123)
+obj.start()
+							</code>
+						</pre>
+					<h3 class="mt-1 mb-3">线程锁</h3>
+					<p>多个进程同时进行的时候呢，若同时对一个变量访问，那就会出现混乱，具体的混乱可以看下面的例子：</p>
+					<pre>
+						<code>
+# example 6
+import threading
+import time
+	
+number = 0
+	
+def plus():
+	global number  # global声明此处的number是外面的全局变量number
+	print("Start %s, time = %s" % (threading.current_thread().getName(), time.ctime()))
+	for _ in range(1000000):  
+		number += 1
+	print("Finish %s, number = %s, time = %s" % (threading.current_thread().getName(), number, time.ctime()))
+	
+print('Start: %s' % time.ctime())
+for i in range(2):  
+	t = threading.Thread(target=plus)
+	t.start()
+	
+time.sleep(2)  # 等待2秒，确保2个子线程都已经结束运算。
+print("Finish Main Thread, number = ", number)
+						</code>
+					</pre>
+					<pre>
+						<code>
+# result 6
+Start: Mon Aug 26 20:08:39 2019
+Start Thread-1, time = Mon Aug 26 20:08:39 2019
+Start Thread-2, time = Mon Aug 26 20:08:39 2019
+Finish Thread-2, number = 1132339, time = Mon Aug 26 20:08:39 2019
+Finish Thread-1, number = 1144554, time = Mon Aug 26 20:08:39 2019
+Finish Main Thread, number =  1144554
+						</code>
+					</pre>
+					<p>程序主要是从0每次加1加到999999，理想结果应该是每个线程为1000000，最后的输出结果是2000000。而运行的结果却是1144554，说明多线程对单变量的访问出现了混乱，并且这种混乱是每次执行的结果都不一样。那么如何保证在某一时刻只有一个线程可以修改变量呢？这就需要引入线程锁。</p>
+					<P>threading模块的线程锁主要有一下几种：</P>
+					<ul>
+						<li>Lock 互斥锁</li>
+						<li>RLock 可重入锁</li>
+						<li>Semaphore 信号</li>
+						<li>Event 事件</li>
+						<li>Condition 条件</li>
+						<li>Barrier “阻碍”</li>
+					</ul>
+					
+					<h4 class="mt-1 mb-3">Lock互斥锁</h4>
+					<p>互斥锁是指同一时刻只有一个线程可以访问共享的数据。首先初始化锁对象，然后将锁当做参数传递给任务函数，在任务中加锁，使用后释放锁。</p>
+					<pre>
+							<code>
+# example 7
+import threading
+import time
+	
+def plus(lk):
+	global number  # global声明此处的number是外面的全局变量number
+	lk.acquire()  # 开始加锁
+	print("Start %s, time = %s" % (threading.current_thread().getName(), time.ctime()))
+	for _ in range(10000000):  
+		number += 1
+	print("Finish %s, number = %s, time = %s" % (threading.current_thread().getName(), number, time.ctime()))
+	lk.release()  # 释放锁，让别的线程也可以访问number
+	
+if __name__ == '__main__':
+	number = 0
+	lock = threading.Lock()
+	print('Start: %s' % time.ctime())
+	for i in range(2):  
+		t = threading.Thread(target=plus, args=(lock,))  
+		t.start()
+	t.join()  
+	print("Finish Main Thread, number = ", number)
+							</code>
+
+							<code>
+# result 7
+Start: Mon Aug 26 20:24:22 2019
+Start Thread-1, time = Mon Aug 26 20:24:22 2019
+Finish Thread-1, number = 10000000, time = Mon Aug 26 20:24:24 2019
+Start Thread-2, time = Mon Aug 26 20:24:24 2019
+Finish Thread-2, number = 20000000, time = Mon Aug 26 20:24:26 2019
+Finish Main Thread, number =  20000000
+							</code>
+						</pre>
+					
+
+					<h4 class="mt-1 mb-3">Semaphore信号</h4>	
+					<p>信号的用法跟互斥锁非常的相似，原理与线程锁并没有多大的区别，只不过线程锁锁住一个线程在运行和修改数据，而信号量可以自己控制同一时刻运行几个线程和几个线程修改数据，也就是设置最大同时运行的线程数.</p>
+					<pre>
+						<code>
+# example 8
+import time
+import threading
+	
+def run(n, se):
+	se.acquire()
+	print("%s run the thread: %s" % (threading.current_thread().getName(), n))
+	time.sleep(1)
+	se.release()
+	
+# 设置允许5个线程同时运行
+semaphore = threading.BoundedSemaphore(5)
+for i in range(20):
+	t = threading.Thread(target=run, args=(i, semaphore))
+	t.start()
+						</code>
+						<code>
+# result 8
+Thread-1 run the thread: 0
+Thread-2 run the thread: 1
+Thread-3 run the thread: 2
+Thread-4 run the thread: 3
+Thread-5 run the thread: 4
+Thread-6 run the thread: 5
+Thread-8 run the thread: 7
+Thread-7 run the thread: 6
+Thread-9 run the thread: 8
+Thread-10 run the thread: 9
+Thread-11 run the thread: 10
+Thread-12 run the thread: 11
+Thread-13 run the thread: 12
+Thread-14 run the thread: 13
+Thread-15 run the thread: 14
+Thread-16 run the thread: 15
+Thread-18 run the thread: 17
+Thread-17 run the thread: 16
+Thread-19 run the thread: 18
+Thread-20 run the thread: 19
+						</code>
+					</pre>
+
+					<h4 class="mt-1 mb-3">Event信号</h4>	
+					<p>使用方法：e = threading.Event()</p>
+					<p>Event对象主要用于线程间通信，确切地说是用于主线程控制其他线程的执行。</p>
+					<p>Event事件提供了四个方法：wait()、clear()、set()和is_set()。</p>
+					<p>Event事件实现通信机制：全局定义了一个“Flag”（默认为False），若调用clear()则Flag为False，执行event.wait方法时会阻塞；调用set()则Flag为True，则执行event.wait方法时便不阻塞，判断Flag状态用is_set()。默认Flag为False时会阻塞。</p>
+					<p>下面使用Event时间模拟信号灯的一个程序，红灯绿灯时间均为5s，若红灯亮，则车辆出于等待状态，若绿灯亮，则车辆行驶。</p>
+					<pre>
+						<code>
+# example 9
+# 利用Event类模拟红绿灯
+import threading
+import time
+	
+event = threading.Event()
+	
+	
+def lighter():
+	green_time = 5  # 绿灯时间
+	red_time = 5  # 红灯时间
+	event.set()  # 初始设为绿灯
+	while True:
+		print("\33[32;0m 绿灯亮...\033[0m")
+		time.sleep(green_time)
+		event.clear()
+		print("\33[31;0m 红灯亮...\033[0m")
+		time.sleep(red_time)
+		event.set()
+	
+	
+def run(name):
+	while True:
+		if event.is_set():  # 判断当前是否"放行"状态
+			print("一辆[%s] 呼啸开过..." % name)
+			time.sleep(1)
+		else:
+			print("一辆[%s]开来，看到红灯，无奈的停下了..." % name)
+			event.wait()
+			print("[%s] 看到绿灯亮了，瞬间飞起....." % name)  # 等待信号灯为True后执行
+	
+	
+if __name__ == '__main__':
+	timer = threading.Timer(15, lighter)
+	timer.start()
+	light = threading.Thread(target=lighter, )
+	light.start()
+	
+	for name in ['奔驰', '宝马', '奥迪']:
+		car = threading.Thread(target=run, args=(name,))
+		car.start()
+	timer.cancel()
+						</code>
+						<code>
+# result 9
+绿灯亮...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+红灯亮...
+一辆[奔驰]开来，看到红灯，无奈的停下了...
+一辆[宝马]开来，看到红灯，无奈的停下了...
+一辆[奥迪]开来，看到红灯，无奈的停下了...
+绿灯亮...
+[奔驰] 看到绿灯亮了，瞬间飞起.....
+一辆[奔驰] 呼啸开过...
+[奥迪] 看到绿灯亮了，瞬间飞起.....
+一辆[奥迪] 呼啸开过...
+[宝马] 看到绿灯亮了，瞬间飞起.....
+一辆[宝马] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+红灯亮...
+一辆[宝马]开来，看到红灯，无奈的停下了...
+一辆[奔驰]开来，看到红灯，无奈的停下了...
+一辆[奥迪]开来，看到红灯，无奈的停下了...
+绿灯亮...
+[宝马] 看到绿灯亮了，瞬间飞起.....
+[奔驰] 看到绿灯亮了，瞬间飞起.....
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+[奥迪] 看到绿灯亮了，瞬间飞起.....
+一辆[奥迪] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[宝马] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[奔驰] 呼啸开过...
+一辆[奥迪] 呼啸开过...
+一辆[宝马] 呼啸开过...
+红灯亮...
+一辆[宝马]开来，看到红灯，无奈的停下了...
+一辆[奔驰]开来，看到红灯，无奈的停下了...
+一辆[奥迪]开来，看到红灯，无奈的停下了...
+						</code>
+					</pre>
+
+					<h4 class="mt-1 mb-3">Condition条件变量</h4>	
+					<p>条件变量是指当某一线程满足要求后，其他线程才能执行。</p>
+					<p>比如吃火锅的时候，有放鱼丸的人和吃鱼丸的人，当放鱼丸达到一定数量的时候（比如5个），然后通知大家来吃鱼丸。如果鱼丸吃完了，那么就会通知放鱼丸的人来放鱼丸。当放了5个的时候又通知其他人吃鱼丸...这是一个生产者和消费者行为。</p>
+					<p>Condition（条件变量）通常与一个锁关联。需要在多个Contidion中共享一个锁时，可以传递一个Lock/RLock实例给构造方法，否则它将自己生成一个RLock实例。</p>
+					<p>可以认为，除了Lock带有的锁定池外，Condition还包含一个等待池，池中的线程处于状态图中的等待阻塞状态，直到另一个线程调用notify()/notifyAll()通知；得到通知后线程进入锁定池等待锁定。</p>
+					<p>Condition():</p>
+					<ul>
+						<li>acquire(): 线程锁</li>
+						<li>release(): 释放锁</li>
+						<li>wait(timeout): 线程挂起，直到收到一个notify通知或者超时（可选的，浮点数，单位是秒s）才会被唤醒继续运行。wait()必须在已获得Lock前提下才能调用，否则会触发RuntimeError。</li>
+						<li>notify(n=1): 通知其他线程，那些挂起的线程接到这个通知之后会开始运行，默认是通知一个正等待该condition的线程,最多则唤醒n个等待的线程。notify()必须在已获得Lock前提下才能调用，否则会触发RuntimeError。notify()不会主动释放Lock。</li>
+						<li>notifyAll(): 如果wait状态线程比较多，notifyAll的作用就是通知所有线程。</li>
+					</ul>
+					<pre>
+						<code>
+# example 10
+import threading
+import time
+	
+con = threading.Condition()
+num = 0
+	
+	
+# 生产者
+class Producer(threading.Thread):
+	
+	def __init__(self):
+		threading.Thread.__init__(self)
+	
+	def run(self):
+		# 锁定线程
+		global num
+		con.acquire()
+		while True:
+			if num == 0:
+				print("开始添加！！！")
+			num += 1
+			print("火锅里面鱼丸个数：%s" % str(num))
+			time.sleep(1)
+			if num >= 5:
+				print("火锅里面里面鱼丸数量已经到达5个，无法添加了！")
+				# 唤醒等待的线程
+				con.notify()  # 唤醒小伙伴开吃啦
+				# 等待通知
+				con.wait()
+		# 释放锁
+		con.release()
+	
+	
+# 消费者
+class Consumers(threading.Thread):
+	def __init__(self):
+		threading.Thread.__init__(self)
+	
+	def run(self):
+		con.acquire()
+		global num
+		while True:
+			if num == 5:
+				print("开始吃啦！！！")
+			num -= 1
+			print("火锅里面剩余鱼丸数量：%s" % str(num))
+	
+			time.sleep(2)
+			if num <= 0:
+				print("锅底没货了，赶紧加鱼丸吧！")
+				con.notify()  # 唤醒其它线程
+				# 等待通知
+				con.wait()
+		con.release()
+	
+	
+p = Producer()
+c = Consumers()
+p.start()
+c.start()
+						</code>
+						<code>
+# result 10
+开始添加！！！
+火锅里面鱼丸个数：1
+火锅里面鱼丸个数：2
+火锅里面鱼丸个数：3
+火锅里面鱼丸个数：4
+火锅里面鱼丸个数：5
+火锅里面里面鱼丸数量已经到达5个，无法添加了！
+开始吃啦！！！
+火锅里面剩余鱼丸数量：4
+火锅里面剩余鱼丸数量：3
+火锅里面剩余鱼丸数量：2
+火锅里面剩余鱼丸数量：1
+火锅里面剩余鱼丸数量：0
+锅底没货了，赶紧加鱼丸吧！
+开始添加！！！
+火锅里面鱼丸个数：1
+火锅里面鱼丸个数：2
+火锅里面鱼丸个数：3
+火锅里面鱼丸个数：4
+火锅里面鱼丸个数：5
+火锅里面里面鱼丸数量已经到达5个，无法添加了！
+开始吃啦！！！
+火锅里面剩余鱼丸数量：4
+火锅里面剩余鱼丸数量：3
+火锅里面剩余鱼丸数量：2
+火锅里面剩余鱼丸数量：1
+火锅里面剩余鱼丸数量：0
+锅底没货了，赶紧加鱼丸吧！
+						</code>
+					</pre>
+					<P>类似的其他例子：<a href="https://blog.csdn.net/comprel/article/details/72798407" target="_blank">https://blog.csdn.net/comprel/article/details/72798407</a></P>
+
+
+					<h4 class="mt-1 mb-3">Timer定时器</h4>	
+					<p>指定n秒后执行某个操作</p>
+					<pre>
+						<code>
+from threading import Timer
+
+def hello():
+	print("hello, world")
+	
+# 表示1秒后执行hello函数
+t = Timer(1, hello)
+t.start()
+						</code>
+					</pre>
+					<h4 class="mt-1 mb-3">Queue实现结果存储</h4>	
+					<p>由于多线程中没有返回值，若有些函数需要return返回值该怎么办呢？那就需要导入queue模块来存储各线程的返回值。</p>
+					<pre>
+						<code>
+# example 11
+import threading
+from queue import Queue
+	
+	
+def job(l, q):
+	for i in range(len(l)):
+		l[i] = l[i] ** 2
+	q.put(l)
+	# return l    # 本来这里应该是将列表l返回的，现在存储在队列中
+	
+	
+if __name__ == '__main__':
+	q = Queue()
+	threads = []
+	data = [[1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6]]
+	
+	for i in range(len(data)):
+		t = threading.Thread(target=job, args=(data[i], q))
+		t.start()
+		threads.append(t)
+	for thread in threads:
+		thread.join()
+	
+	result = []
+	for _ in range(len(data)):
+		result.append(q.get())
+	print(result)
+						</code>
+						<code>
+# result 11
+[[1, 4, 9], [4, 9, 16], [9, 16, 25], [16, 25, 36]]
+						</code>
+					</pre>
+					<h4 class="mt-1 mb-3">with语句</h4>	
+					<p>锁的锁定与释放与文件的打开与关闭类似，若打开了锁未能正确关闭则会影响程序的进行，因此同样可以用with语句来自动关闭锁：</p>
+					<pre>
+						<code>
+with some_lock:
+# 执行任务...
+						</code>
+					</pre>
+						<p>等同于：</p>
+					<pre>
+						<code>
+some_lock.acquire()
+try:
+	# 执行任务..
+finally:
+	some_lock.release()
+						</code>
+					</pre>
+					<h4 class="mt-1 mb-3">全局解释器锁GIL(Global Interpreter Lock)</h4>	
+					<p>python在设计之初就考虑到在解释器的主循环中，同时只有一个线程在运行。<b>即在任意时刻只有一个线程在解释器中运行。对python虚拟机访问的控制由全局解释锁GIL控制，正是这个锁来控制同一时刻只有一个线程能够运行。</b></p>
+					<p>详细参考：</p>
+					<P><a href="https://www.jianshu.com/p/573aaa001b35"  target="_blank">python之理解GIL</a></P>
+					<p><a href="https://blog.csdn.net/liufuchun111/article/details/81568023"  target="_blank">Python的GIL是什么鬼，多线程性能究竟如何</a></p>
+
+					<p><small>转载请联系：<a href="mailto:zhoudengji19@mails.ucas.edu.cn">zhoudengji19@mails.ucas.edu.cn</a></small></p>
+
+				   
+			    </div>
+				    
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="PKU-ISA.html">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="CCNet.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+				
+		    </div><!--//container-->
+		</article>
+		    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+				<small class="copyright">&copy 2019 • ZhouDengji</small>
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+    
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">Choose Colour</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->
+
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js"></script>
+    
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="assets/js/demo/style-switcher.js"></script>     
+    
+
+</body>
+</html> 
+
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e8873c31637d2228b528f6f1a1ca10eb";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
